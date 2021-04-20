@@ -1,7 +1,8 @@
+
 const dynamicContent = document.querySelector(".dynamicContent")
 let athleteID = null
 topNavBarListener()
-
+sideBarEventListener()
 
 
 
