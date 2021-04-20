@@ -32,6 +32,9 @@ topNavBar.addEventListener('click', event => {
         clearPage()
         // render sign up form
         signUpForm()
+    }else if (event.target.matches('#login')) {
+      clearPage()
+      logInForm()
     }
 })
 }
@@ -72,9 +75,9 @@ function signUpForm() {
 }
 
 function signUp() {
-  const signUpFormElement = document.querySelector(".dynamicContent")
+  //const signUpFormElement = document.querySelector(".dynamicContent")
   
-  signUpFormElement.addEventListener('submit', event => {
+  dynamicContent.addEventListener('submit', event => {
     event.preventDefault()
     const email = event.target.email.value
     const name = event.target.name.value
@@ -87,6 +90,37 @@ function signUp() {
   })
   
 }
+
+function loginInForm() {
+  dynamicContent.innerHTML = `
+  <div class="col-auto">
+  <label for="exampleInputEmail1" class="form-label">Email address</label>
+  <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+  <div id="emailHelp" class="form-text"></div>
+  </div>
+
+  <div class="col-auto">
+  <label for="exampleInputPassword1" class="form-label">Password</label>
+  <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter password">
+  </div>`
+  pushLoginData()
+} 
+
+function pushLoginData() {
+    dynamicContent.addEventListener('submit', event => {
+      event.preventDefault()
+      const email = event.target.email.value
+      const password = event.target.password.value
+      const loginFormData = {email, password}
+      loginFetchRequest(loginFormData)
+    })
+}
+
+
+
+
+
+
 
 
 
@@ -114,6 +148,21 @@ function pushNewUserToDatabase(athleteObj) {
   .then(newAthleteObj => {
     athleteID = newAthleteObj.id
     backToHomePage(message = newAthleteObj.name)
+  })
+}
+function loginFetchRequest(loginFormData) {
+  fetch("http://localhost:3000/athletes",{
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(loginFormData)
+  })
+  .then(resp => resp.json())
+  .then(loggedInUser => {
+    athleteID = loggedInUser.id
+    backToHomePage(message = loggedInUser.name)
   })
 }
 function backToHomePage(message = nill) {
