@@ -1,4 +1,5 @@
 const dynamicContent = document.querySelector(".dynamicContent")
+let athleteID = null
 topNavBarListener()
 
 
@@ -31,7 +32,6 @@ topNavBar.addEventListener('click', event => {
         clearPage()
         // render sign up form
         signUpForm()
-
     }
 })
 }
@@ -40,18 +40,18 @@ function signUpForm() {
     const signUpHtml = `<form class="sign-up-form">
   <div class="col-auto">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
     <div id="emailHelp" class="form-text"></div>
   </div>
 
   <div class="col-auto">
   <label>Name</label>
-  <input type="text" class="form-control"  placeholder="Enter Name">
+  <input type="text" name="name" class="form-control"  placeholder="Enter Name">
 </div>
 
   <div class="col-auto">
     <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter password">
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter password">
   </div>
 
   <div class="col-auto">
@@ -68,7 +68,31 @@ function signUpForm() {
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>`
     dynamicContent.innerHTML = signUpHtml
+    signUp()
 }
+
+function signUp() {
+  const signUpFormElement = document.querySelector(".dynamicContent")
+  
+  signUpFormElement.addEventListener('submit', event => {
+    event.preventDefault()
+    const email = event.target.email.value
+    const name = event.target.name.value
+    const password = event.target.password.value
+    const age = event.target.age.value
+    const weight_in_lbs = event.target.weight.value
+    const newAthleteObj = {email, name, password, age, weight_in_lbs}
+    console.log(newAthleteObj)
+    pushNewUserToDatabase(newAthleteObj)
+  })
+  
+}
+
+
+
+
+
+
 
 
 function clearPage() {
@@ -76,6 +100,47 @@ function clearPage() {
         dynamicContent.removeChild(dynamicContent.firstChild)
     }
 }
+function pushNewUserToDatabase(athleteObj) {
+  // debugger
+  fetch("http://localhost:3000/athletes",{
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(athleteObj)
+  })
+  .then(resp => resp.json())
+  .then(newAthleteObj => {
+    athleteID = newAthleteObj.id
+    backToHomePage(message = newAthleteObj.name)
+  })
+}
+function backToHomePage(message = nill) {
+  if (message) {
+    dynamicContent.innerHTML = `<p>Welcome ${message}</p>`
+  }
+  clearPage()
+  dynamicContent.innerHTML = `<p>Welcome to Faceoff - Iron Fist</p>
+                                <p><b>the place where "Some Quote"</b></p>`
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Side bar this will toggle the side par open and closed
@@ -84,8 +149,6 @@ $(document).ready(function () {
         $('#sidebar').toggleClass('active');
     });
 });
-
-
 
 
 
