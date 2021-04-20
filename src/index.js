@@ -91,7 +91,7 @@ function signUp() {
   
 }
 
-function loginInForm() {
+function logInForm() {
   dynamicContent.innerHTML = `
   <div class="col-auto">
   <label for="exampleInputEmail1" class="form-label">Email address</label>
