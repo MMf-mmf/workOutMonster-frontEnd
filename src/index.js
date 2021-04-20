@@ -1,5 +1,6 @@
 const dynamicContent = document.querySelector(".dynamicContent")
 let athleteID = null
+let athleteObject
 topNavBarListener()
 
 
@@ -92,7 +93,7 @@ function signUp() {
 }
 
 function logInForm() {
-  dynamicContent.innerHTML = `
+  dynamicContent.innerHTML = `<form class="log-in-form">
   <div class="col-auto">
   <label for="exampleInputEmail1" class="form-label">Email address</label>
   <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
@@ -102,7 +103,10 @@ function logInForm() {
   <div class="col-auto">
   <label for="exampleInputPassword1" class="form-label">Password</label>
   <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter password">
-  </div>`
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+  </form>`
   pushLoginData()
 } 
 
@@ -151,7 +155,7 @@ function pushNewUserToDatabase(athleteObj) {
   })
 }
 function loginFetchRequest(loginFormData) {
-  fetch("http://localhost:3000/athletes",{
+  fetch("http://localhost:3000/athletes/login",{
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -162,6 +166,7 @@ function loginFetchRequest(loginFormData) {
   .then(resp => resp.json())
   .then(loggedInUser => {
     athleteID = loggedInUser.id
+    athleteObject = loggedInUser
     backToHomePage(message = loggedInUser.name)
   })
 }
