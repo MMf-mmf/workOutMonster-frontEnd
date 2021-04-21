@@ -16,7 +16,7 @@ const COLOR_CODES = {
   }
 };
 
-const TIME_LIMIT = 20;
+const TIME_LIMIT = 300;
 let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
@@ -40,9 +40,8 @@ function timerFunction() {
       ></path>
     </g>
   </svg>
-  <span id="base-timer-label" class="base-timer__label">${formatTime(
-    timeLeft
-  )}</span>
+  <span id="base-timer-label" class="base-timer__label">${formatTime(timeLeft)}</span>
+  <button type="button" class="btn btn-success">Start</button>
 </div>
 `;
 

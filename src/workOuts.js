@@ -8,8 +8,7 @@ const workoutList = document.querySelector('#workout-list > a')
 // function sideBarEventListener() {
 //     sideBar.addEventListener('click', event => {
 //         if (event.target.id == "workout-1") {
-//             clearPage()
-//             timerFunction()
+
 //         }
 //     })
 // }
@@ -36,7 +35,8 @@ function renderAllWorkOuts() {
 function workoutCardListener() {
     dynamicContentBody.addEventListener('click', event => {
         if (event.target.matches('.card')) {
-            console.log('i was clicked')
+           clearPage()
+           timerFunction()
         }
     })
 }
@@ -75,10 +75,12 @@ function renderChallengeLinks(array) {
 
 function showChallenge(challenge) {
     const cardDiv = document.createElement('div')
-    cardDiv.classList = 'card'
+    cardDiv.classList.add('card')
+    
+ 
     cardDiv.dataset.id = challenge.id
     cardDiv.innerHTML=`
-    <div data-id=${challenge.id}>
+   
     <h1>${challenge.name}</h1>
     Your task:<br>
     ${challenge.description}<br>
@@ -88,7 +90,6 @@ function showChallenge(challenge) {
     ${challenge.min_time}<br>
     ${challenge.max_time}<br>
     ${challenge.muscle_group}<br>
-    ${challenge.image}<br>
-    </div>`
+    ${challenge.image}<br>`
     dynamicContent.append(cardDiv)
 }

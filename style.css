@@ -7,6 +7,8 @@
     margin: auto;
     width: 80%;
     padding: 20px;
+
+  
   }
 
   h1 {
@@ -14,10 +16,17 @@
     color: white;
   }
 
+  .card:hover {
+    background-color: whitesmoke;
+    border: #e04b52 solid 1px;
+    color: #e04b52;
+  }
+
   .card{
+  width: 40%;
   font-style: italic;
   text-align: center;
-  border: grey solid 1px;
+  border: grey solid 2px;
   padding: 1rem;
   width: 20rem;
   height: 25rem;
@@ -261,6 +270,7 @@ form{
   
   .base-timer__svg {
     transform: scaleX(-1);
+    position: center;
   }
   
   .base-timer__circle {
