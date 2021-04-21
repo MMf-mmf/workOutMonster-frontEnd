@@ -29,7 +29,7 @@ function renderAllWorkOuts() {
                .then(response => response.json())
                .then(workOutArray => {
                 workOutArray.forEach(challenge => {
-                    console.log(challenge)
+                    showChallenge(challenge)
                 })
                }) 
     
@@ -60,34 +60,18 @@ function renderChallengeLinks(array) {
         fetch(`http://localhost:3000/challenges/${challenge.id}`)
         .then(response => response.json())
         .then(challenge => {
-            showChallenge(challenge)
-            // dynamicContentBody.innerHTML=`
-            
-            // <div data-id=${challenge.id}>
-            // <h1>${challenge.name}</h1>
-            // Your task:<br>
-            // ${challenge.description}<br>
-            // ${challenge.min_reps}<br>
-            // ${challenge.min_weight}<br>
-            // ${challenge.skill_level}<br>
-            // ${challenge.min_time}<br>
-            // ${challenge.max_time}<br>
-            // ${challenge.muscle_group}<br>
-            // ${challenge.image}<br>
-            // </div>
-            // `
-            
+            showChallenge(challenge)   
         })
-        
-        
     })
     })
 }
 
 
 function showChallenge(challenge) {
-    dynamicContentBody.innerHTML=`
-            
+    const cardDiv = document.createElement('div')
+    cardDiv.classList = 'card'
+    cardDiv.dataset.id = challenge.id
+    cardDiv.innerHTML=`
     <div data-id=${challenge.id}>
     <h1>${challenge.name}</h1>
     Your task:<br>
@@ -99,6 +83,6 @@ function showChallenge(challenge) {
     ${challenge.max_time}<br>
     ${challenge.muscle_group}<br>
     ${challenge.image}<br>
-    </div>
-    `
+    </div>`
+    dynamicContent.append(cardDiv)
 }
