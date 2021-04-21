@@ -90,6 +90,16 @@ function showChallenge(challenge) {
     ${challenge.min_time}<br>
     ${challenge.max_time}<br>
     ${challenge.muscle_group}<br>
+<<<<<<< HEAD
     ${challenge.image}<br>`
+=======
+    ${challenge.image}<br>
+    </div>`
+    cardDiv.addEventListener('click', event => {
+        fetch(`http://localhost:3000/challenges/rankings/${challenge.id}`)
+        .then(response => response.json())
+        .then(console.log)
+    })
+>>>>>>> e5095ff27335b3a5965608c576499e28dc555833
     dynamicContent.append(cardDiv)
 }

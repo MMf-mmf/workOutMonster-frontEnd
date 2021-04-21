@@ -44,7 +44,10 @@ function timerFunction() {
   <button type="button" class="btn btn-success">Start</button>
 </div>
 `;
-
+const startButton = document.querySelector('btn')
+function buttonEventListener(params) {
+  startButton.addEventListener('click', )
+}
 startTimer();
 }
 
