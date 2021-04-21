@@ -4,7 +4,7 @@ let athleteID = null
 let athleteObject
 topNavBarListener()
 sideBarEventListener()
-
+fetchChallenges().then(renderChallengeLinks)
 
 
 
