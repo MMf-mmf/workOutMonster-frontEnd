@@ -1,20 +1,18 @@
 const sideBar = document.querySelector("#sidebar")
 const sideBarChallengeUl = document.querySelector("#pageSubmenu")
 const dynamicContentBody = document.querySelector("#app")
-const workoutList = document.querySelector('#workout-list')
+const workoutList = document.querySelector('#workout-list > a')
 
 
-// need to add a data set id to every work out in the drop down
-function sideBarEventListener() {
-    sideBar.addEventListener('click', event => {
-       
-        if (event.target.id == "workout-1") {
-            clearPage()
-            timerFunction()
-            // renderWorkOut(event.target.dataset.id)
-        }
-    })
-}
+
+// function sideBarEventListener() {
+//     sideBar.addEventListener('click', event => {
+//         if (event.target.id == "workout-1") {
+//             clearPage()
+//             timerFunction()
+//         }
+//     })
+// }
 
 
 function workoutsChallengesEventListener() {
@@ -31,10 +29,17 @@ function renderAllWorkOuts() {
                 workOutArray.forEach(challenge => {
                     showChallenge(challenge)
                 })
+                workoutCardListener()
                }) 
-    
 }
 
+function workoutCardListener() {
+    dynamicContentBody.addEventListener('click', event => {
+        if (event.target.matches('.card')) {
+            console.log('i was clicked')
+        }
+    })
+}
 
 
 
@@ -60,6 +65,7 @@ function renderChallengeLinks(array) {
         fetch(`http://localhost:3000/challenges/${challenge.id}`)
         .then(response => response.json())
         .then(challenge => {
+            clearPage()
             showChallenge(challenge)   
         })
     })
