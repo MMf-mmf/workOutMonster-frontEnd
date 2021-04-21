@@ -6,7 +6,7 @@ function sideBarEventListener() {
        
         if (event.target.id == "workout-1") {
             clearPage()
-            startTimer()
+            timerFunction()
             // renderWorkOut(event.target.dataset.id)
         }
     })

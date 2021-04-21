@@ -170,7 +170,7 @@ function loginFetchRequest(loginFormData) {
     athleteObject = loggedInUser
     backToHomePage(message = loggedInUser.name)
   })
-  .catch(error => window.alert("Your username or passoword is incorrect. Please try again."))
+  .catch(error => window.alert("Your username or password is incorrect. Please try again."))
 }
 function backToHomePage(message = nill) {
   if (message) {
