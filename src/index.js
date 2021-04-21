@@ -5,6 +5,8 @@ let athleteObject
 topNavBarListener()
 sideBarEventListener()
 fetchChallenges().then(renderChallengeLinks)
+workoutsChallengesEventListener()
+
 
 
 

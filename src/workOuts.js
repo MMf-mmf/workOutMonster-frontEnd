@@ -1,6 +1,8 @@
 const sideBar = document.querySelector("#sidebar")
 const sideBarChallengeUl = document.querySelector("#pageSubmenu")
 const dynamicContentBody = document.querySelector("#app")
+const workoutList = document.querySelector('#workout-list')
+
 
 // need to add a data set id to every work out in the drop down
 function sideBarEventListener() {
@@ -14,9 +16,34 @@ function sideBarEventListener() {
     })
 }
 
-function renderWorkOut(workOutId) {
 
+function workoutsChallengesEventListener() {
+    workoutList.addEventListener('click', event => {
+        clearPage()
+        renderAllWorkOuts()
+    })
 }
+
+function renderAllWorkOuts() {
+         fetch('http://localhost:3000/challenges')
+               .then(response => response.json())
+               .then(workOutArray => {
+                workOutArray.forEach(challenge => {
+                    console.log(challenge)
+                })
+               }) 
+    
+}
+
+
+
+
+
+
+
+
+
+
 
 function fetchChallenges() {
     return fetch('http://localhost:3000/challenges')
@@ -33,24 +60,45 @@ function renderChallengeLinks(array) {
         fetch(`http://localhost:3000/challenges/${challenge.id}`)
         .then(response => response.json())
         .then(challenge => {
-            dynamicContentBody.innerHTML=`
-            <h1>${challenge.name}</h1>
-            <div>
-            Your task:<br>
-            ${challenge.description}<br>
-            ${challenge.min_reps}<br>
-            ${challenge.min_weight}<br>
-            ${challenge.skill_level}<br>
-            ${challenge.min_time}<br>
-            ${challenge.max_time}<br>
-            ${challenge.muscle_group}<br>
-            ${challenge.image}<br>
-            </div>
-            `
+            showChallenge(challenge)
+            // dynamicContentBody.innerHTML=`
+            
+            // <div data-id=${challenge.id}>
+            // <h1>${challenge.name}</h1>
+            // Your task:<br>
+            // ${challenge.description}<br>
+            // ${challenge.min_reps}<br>
+            // ${challenge.min_weight}<br>
+            // ${challenge.skill_level}<br>
+            // ${challenge.min_time}<br>
+            // ${challenge.max_time}<br>
+            // ${challenge.muscle_group}<br>
+            // ${challenge.image}<br>
+            // </div>
+            // `
             
         })
         
         
     })
     })
+}
+
+
+function showChallenge(challenge) {
+    dynamicContentBody.innerHTML=`
+            
+    <div data-id=${challenge.id}>
+    <h1>${challenge.name}</h1>
+    Your task:<br>
+    ${challenge.description}<br>
+    ${challenge.min_reps}<br>
+    ${challenge.min_weight}<br>
+    ${challenge.skill_level}<br>
+    ${challenge.min_time}<br>
+    ${challenge.max_time}<br>
+    ${challenge.muscle_group}<br>
+    ${challenge.image}<br>
+    </div>
+    `
 }
