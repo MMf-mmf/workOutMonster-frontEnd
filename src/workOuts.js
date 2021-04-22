@@ -2,7 +2,8 @@ const sideBar = document.querySelector("#sidebar")
 const sideBarChallengeUl = document.querySelector("#pageSubmenu")
 const dynamicContentBody = document.querySelector("#app")
 const workoutList = document.querySelector('#workout-list > a')
-
+let currentLeaderBoardArray
+let currentChallenge
 
 
 // function sideBarEventListener() {
@@ -36,11 +37,32 @@ function workoutCardListener() {
     dynamicContentBody.addEventListener('click', event => {
         if (event.target.matches('.card')) {
            clearPage()
-           timerFunction()
+           console.log(event.target)
+           console.log(event.target.dataset.id)
+           fetch(`http://localhost:3000/challenges/${event.target.dataset.id}`)
+            .then(response => response.json())
+            .then(challenge => {currentChallenge = challenge
+                console.log(currentChallenge)
+                // console.log(checkProperties(challenge))
+                dynamicContentBody.innerHTML = `
+                <h1>${challenge.name}</h1>
+                <button type="button">Attempt this Challenge</button>
+                `
+            })
+
+        //    timerFunction()
         }
     })
 }
 
+// function checkProperties(object) {
+//     let attributeArray
+//     for (let key in object) {
+//         if (object[key] !== null)
+//             attributeArray.key = object[key]
+//     }
+//     return attributeArray;
+// }
 
 
 
@@ -95,7 +117,10 @@ function showChallenge(challenge) {
     cardDiv.addEventListener('click', event => {
         fetch(`http://localhost:3000/challenges/rankings/${challenge.id}`)
         .then(response => response.json())
-        .then(console.log)
+        .then(leaderBoardArray => {
+            currentLeaderBoardArray = leaderBoardArray
+        })
+        
     })
     dynamicContent.append(cardDiv)
 }
