@@ -2,8 +2,7 @@ const sideBar = document.querySelector("#sidebar")
 const sideBarChallengeUl = document.querySelector("#pageSubmenu")
 const dynamicContentBody = document.querySelector("#app")
 const workoutList = document.querySelector('#workout-list > a')
-let currentLeaderBoardArray
-let currentChallenge
+
 
 
 // function sideBarEventListener() {
@@ -38,32 +37,11 @@ function workoutCardListener() {
         if (event.target.matches('.card')) {  // && !athleteID   test if user is Logged in before allowing 
             challengeID = event.target.dataset.id
            clearPage()
-           console.log(event.target)
-           console.log(event.target.dataset.id)
-           fetch(`http://localhost:3000/challenges/${event.target.dataset.id}`)
-            .then(response => response.json())
-            .then(challenge => {currentChallenge = challenge
-                console.log(currentChallenge)
-                // console.log(checkProperties(challenge))
-                dynamicContentBody.innerHTML = `
-                <h1>${challenge.name}</h1>
-                <button type="button">Attempt this Challenge</button>
-                `
-            })
-
-        //    timerFunction()
+           timerFunction()
         }
     })
 }
 
-// function checkProperties(object) {
-//     let attributeArray
-//     for (let key in object) {
-//         if (object[key] !== null)
-//             attributeArray.key = object[key]
-//     }
-//     return attributeArray;
-// }
 
 
 
@@ -107,21 +85,11 @@ function showChallenge(challenge) {
     <h1>${challenge.name}</h1>
     Your task:<br>
     ${challenge.description}<br>
-    ${challenge.min_reps}<br>
-    ${challenge.min_weight}<br>
-    ${challenge.skill_level}<br>
-    ${challenge.min_time}<br>
-    ${challenge.max_time}<br>
-    ${challenge.muscle_group}<br>
-    ${challenge.image}<br>
     </div>`
     cardDiv.addEventListener('click', event => {
         fetch(`http://localhost:3000/challenges/rankings/${challenge.id}`)
         .then(response => response.json())
-        .then(leaderBoardArray => {
-            currentLeaderBoardArray = leaderBoardArray
-        })
-        
+        .then(console.log)
     })
     dynamicContent.append(cardDiv)
 }

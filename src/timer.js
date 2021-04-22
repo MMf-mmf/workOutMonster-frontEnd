@@ -1,6 +1,6 @@
 const FULL_DASH_ARRAY = 283;
-const WARNING_THRESHOLD = 10;
-const ALERT_THRESHOLD = 5;
+const WARNING_THRESHOLD = 30;
+const ALERT_THRESHOLD = 10;
 
 const COLOR_CODES = {
   info: {
@@ -16,7 +16,7 @@ const COLOR_CODES = {
   }
 };
 
-const TIME_LIMIT = 300;
+let TIME_LIMIT = 1200;
 let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
@@ -42,15 +42,16 @@ function timerFunction() {
   </svg>
   <span id="base-timer-label" class="base-timer__label">${formatTime(timeLeft)}</span>
   <button type="button" class="btn btn-success">Start</button>
-  </div>
-`
-
+</div>
+`;
 timerInputField()
-
-const startButton = document.querySelector('.btn-success')
-  startButton.addEventListener('click',event => {
+const startButton = document.querySelector('#app > div > button')
+  startButton.addEventListener('click', event => {
     startTimer()
+    
   })
+
+
 }
 
 
@@ -61,7 +62,9 @@ function onTimesUp() {
 }
 
 function startTimer() {
+  console.log(timeLeft)
   timerInterval = setInterval(() => {
+
     timePassed = timePassed += 1;
     timeLeft = TIME_LIMIT - timePassed;
     document.getElementById("base-timer-label").innerHTML = formatTime(
@@ -119,4 +122,11 @@ function setCircleDasharray() {
     .getElementById("base-timer-path-remaining")
     .setAttribute("stroke-dasharray", circleDasharray);
 }
+
+
+
+
+
+
+
 
