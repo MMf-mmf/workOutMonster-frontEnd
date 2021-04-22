@@ -2,6 +2,7 @@
 const dynamicContent = document.querySelector(".dynamicContent")
 let athleteID = null
 let athleteObject
+let challengeID = null
 topNavBarListener()
 fetchChallenges().then(renderChallengeLinks)
 workoutsChallengesEventListener()
@@ -173,13 +174,29 @@ function loginFetchRequest(loginFormData) {
   })
   .catch(error => window.alert("Your username or password is incorrect. Please try again."))
 }
+
 function backToHomePage(message = nill) {
+
+
   if (message) {
-    dynamicContent.innerHTML = `<p>Welcome ${message}</p>`
-  }
-  clearPage()
+    const sigUpElement = document.querySelector('#sign-up')
+    const sigInElement = document.querySelector('#login')
+    const profileElement = document.querySelector("#profile")
+    const sigOutElement = document.querySelector('#log-out')
+
+    sigInElement.style.display = 'none'
+    sigUpElement.style.display = 'none'
+    profileElement.style.display = 'block'
+    sigOutElement.style.display = 'block'
+
+    dynamicContent.innerHTML = `<p>Hello  ${message}</p>
+    <p>Welcome to Faceoff - Iron Fist</p>
+        <p><b>the place where "Some Quote"</b></p>`
+  }else{
   dynamicContent.innerHTML = `<p>Welcome to Faceoff - Iron Fist</p>
                                 <p><b>the place where "Some Quote"</b></p>`
+  }
+  // clearPage()
 }
 
 

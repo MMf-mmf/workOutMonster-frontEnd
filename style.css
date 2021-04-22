@@ -8,18 +8,30 @@
     width: 80%;
     padding: 20px;
 
-  
   }
 
   h1 {
-    background-color: rgb(199, 83, 83);
+    background-color: rgb(187, 143, 143);
     color: white;
+    opacity: 0.4;
+    padding: 20px;
   }
+  #app > div:nth-child(1) > h1{
+      background-color: transparent;
+      opacity: 1;
+      color: rgb(255, 242, 242);
+      
+}
+
+
+#app > div:nth-child(1) > h3{
+    color: silver;
+}
 
   .card:hover {
     background-color: whitesmoke;
-    border: #e04b52 solid 1px;
-    color: #e04b52;
+    border: #4bb1e0 solid 1px;
+    color: #6f67a2;
   }
 
   .card{
@@ -32,16 +44,70 @@
   height: 25rem;
   display: inline-grid;
   margin: 1rem 2rem;
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTDB64ozcNByKYHBdYuJdwHgx8RJaVE6O8F8dk1CCLRHEQusZtvP5ams2XRb9w-N5hqEQ&usqp=CAU");
-  background-color: #4ed0ce;
+  color: rgb(69, 151, 196);
+  }
+div.card[data-id = '2']{
+    background-image: url("https://www.aleanlife.com/wp-content/uploads/2020/09/classic-pushup.gif");
+    background-size: 400px 620px
+}
+
+div.card[data-id = '1']{
+    background-image: url("https://i.pinimg.com/originals/68/01/cb/6801cb5f259e4e3fb793912c53366b7e.gif");
+    background-size: 400px 510px
+}
+
+div.card[data-id = '3']{
+    background-image: url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/workouts/2016/03/plank-1457045584.gif");
+    background-size: 400px 750px
+}
+
+
+  a[data-id = '1']{
+      background-color: #47748b;
+  }
+  a[data-id = '2']{
+    background-color: #5c91ac;
+}
+  a[data-id = '3']{
+    background-color: #8aa8b6;
+}
+
+  .timer-form{
+    padding-top: 20px;
+    margin-left: -22%; /*  the % number needs to be ajusted for screen size */
+  }
+  #content > nav {
+      background-color: dimgray;
   }
 
+  #content{
+      background-image: url("https://www.interiordecorating.com/images/cat/wall/bluemtn/FB075781_z.jpg");
+      background-size: 1000px 1500px
+  }
 
+  #login{
+      display: block;
+  }
 
+  #log-out{
+      display: none;
+  }
 
+  #sign-up{
+      display: block;
+  }
+  
+  #profile{
+      display: none;
+  }
 
+  #app > div > form > div{
+      color:rgb(65, 228, 155);
+  }
 
-
+  form{
+      color: #fafafa
+  }
 
 
 
@@ -130,7 +196,7 @@ a:focus {
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: #7386D5;
+    background: #8288a3;
     color: #fff;
     transition: all 0.3s;
 }
@@ -141,7 +207,7 @@ a:focus {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #6d7fcc;
+    background: #8288a3;
 }
 
 #sidebar ul.components {
@@ -168,7 +234,7 @@ a:focus {
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
     color: #fff;
-    background: #6d7fcc;
+    background: #8288a3;
 }
 
 a[data-toggle="collapse"] {
@@ -266,6 +332,7 @@ form{
     position: relative;
     width: 600px;
     height: 600px;
+    margin-left: 25%;
   }
   
   .base-timer__svg {
@@ -307,11 +374,12 @@ form{
   
   .base-timer__label {
     position: absolute;
-    width: 600px;
-    height: 600px;
+    width: 500px;
+    height: 500px;
     top: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 100px;
+    color: rgb(65, 228, 155);
   }
