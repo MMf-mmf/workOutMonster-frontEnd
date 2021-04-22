@@ -264,8 +264,8 @@ form{
 
 .base-timer {
     position: relative;
-    width: 600px;
-    height: 600px;
+    width: 500px;
+    height: 500px;
   }
   
   .base-timer__svg {
@@ -307,8 +307,8 @@ form{
   
   .base-timer__label {
     position: absolute;
-    width: 600px;
-    height: 600px;
+    width: 500px;
+    height: 500px;
     top: 0;
     display: flex;
     align-items: center;

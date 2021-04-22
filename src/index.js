@@ -2,6 +2,7 @@
 const dynamicContent = document.querySelector(".dynamicContent")
 let athleteID = null
 let athleteObject
+let challengeID = null
 topNavBarListener()
 fetchChallenges().then(renderChallengeLinks)
 workoutsChallengesEventListener()
@@ -175,11 +176,15 @@ function loginFetchRequest(loginFormData) {
 }
 function backToHomePage(message = nill) {
   if (message) {
-    dynamicContent.innerHTML = `<p>Welcome ${message}</p>`
+    dynamicContent.innerHTML = `<p>Hello  ${message}</p>
+    <p>Welcome to Faceoff - Iron Fist</p>
+        <p><b>the place where "Some Quote"</b></p>`
+  }else{
+    dynamicContent.innerHTML = `<p>Welcome to Faceoff - Iron Fist</p>
+    <p><b>the place where "Some Quote"</b></p>`
   }
-  clearPage()
-  dynamicContent.innerHTML = `<p>Welcome to Faceoff - Iron Fist</p>
-                                <p><b>the place where "Some Quote"</b></p>`
+  // clearPage()
+
 }
 
 

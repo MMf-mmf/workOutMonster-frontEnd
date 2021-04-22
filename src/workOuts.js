@@ -34,7 +34,8 @@ function renderAllWorkOuts() {
 
 function workoutCardListener() {
     dynamicContentBody.addEventListener('click', event => {
-        if (event.target.matches('.card')) {
+        if (event.target.matches('.card')) {  // && !athleteID   test if user is Logged in before allowing 
+            challengeID = event.target.dataset.id
            clearPage()
            timerFunction()
         }

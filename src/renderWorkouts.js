@@ -1,4 +1,3 @@
-
 function timerInputField() {
     const timerDiv = document.querySelector('.base-timer')
     const timerForm = document.createElement('form')
