@@ -37,6 +37,7 @@ function workoutCardListener() {
     dynamicContentBody.addEventListener('click', event => {
         if (event.target.matches('.card')) {
            clearPage()
+           setTimeout
            console.log(event.target)
            console.log(event.target.dataset.id)
            fetch(`http://localhost:3000/challenges/${event.target.dataset.id}`)
@@ -44,32 +45,109 @@ function workoutCardListener() {
             .then(challenge => {currentChallenge = challenge
                 console.log(currentChallenge)
                 // console.log(checkProperties(challenge))
-                dynamicContentBody.innerHTML = `
+                if (challenge.max_time == 5) {
+                    dynamicContentBody.innerHTML = `
                 <h1>${challenge.name}</h1>
-                <button type="button">Attempt this Challenge</button>
+                <div>
+                <h6>Your Task:</h6>
+                ${challenge.description}
+                </div><br>
+                <div>
+                <h6>Max Time Allowed:</h6>
+                ${challenge.max_time} Minutes
+                </div><br>
+                <div>
+                <h6>Skill Level:</h6>
+                ${challenge.skill_level}
+                </div><br>
+                <div>
+                <h6>Muscle Group:</h6>
+                ${challenge.muscle_group}
+                </div><br>
                 `
+                }
+
+                if (challenge.name == "Bodyweight Plank Hold" ) {
+                    dynamicContentBody.innerHTML = `
+                <h1>${challenge.name}</h1>
+                <div>
+                <h6>Your Task:</h6>
+                ${challenge.description}
+                </div><br>
+                <h6>Skill Level:</h6>
+                ${challenge.skill_level}
+                </div><br>
+                <div>
+                <h6>Muscle Group:</h6>
+                ${challenge.muscle_group}
+                </div><br>
+                `
+                }
+
+                let leaderboard = document.createElement('table')
+                let toptrElement = document.createElement('tr')
+
+                if (challenge.max_time == 5) {
+                let fields = ["Name", "Best Attempt (Reps)", "Faceoff Point Ranking"]
+                fields.forEach( field => {
+                    let topthElement = document.createElement('th')
+                    topthElement.innerText=`${field}`
+                    toptrElement.append(topthElement)
+                })
+                leaderboard.append(toptrElement)
+                dynamicContentBody.append(leaderboard)
+                
+                currentLeaderBoardArray.forEach( athlete => {
+                    let newtrElement = document.createElement('tr')
+                    let namethElm = document.createElement('th')
+                    namethElm.innerText=`${athlete.name}`
+                    newtrElement.append(namethElm)
+                    let repAttemptElement = document.createElement('th')
+                    repAttemptElement.innerText=`${athlete.reps}`
+                    newtrElement.append(repAttemptElement)
+                    let scoreElement = document.createElement('th')
+                    scoreElement.innerText=`${(athlete.score +300).toFixed(2)}`
+                    newtrElement.append(scoreElement)
+                    leaderboard.append(newtrElement)
+                } )
+            }
+
+            if (challenge.name == "Bodyweight Plank Hold") {
+                let fields = ["Name", "Best Attempt (Seconds)", "Faceoff Point Ranking"]
+                fields.forEach( field => {
+                    let topthElement = document.createElement('th')
+                    topthElement.innerText=`${field}`
+                    toptrElement.append(topthElement)
+                })
+                leaderboard.append(toptrElement)
+                dynamicContentBody.append(leaderboard)
+                
+                currentLeaderBoardArray.forEach( athlete => {
+                    let newtrElement = document.createElement('tr')
+                    let namethElm = document.createElement('th')
+                    namethElm.innerText=`${athlete.name}`
+                    newtrElement.append(namethElm)
+                    let timeAttemptElement = document.createElement('th')
+                    timeAttemptElement.innerText=`${athlete.time}`
+                    newtrElement.append(timeAttemptElement)
+                    let scoreElement = document.createElement('th')
+                    scoreElement.innerText=`${(athlete.score +200).toFixed(2)}`
+                    newtrElement.append(scoreElement)
+                    leaderboard.append(newtrElement)
+                } )
+            }
+
+                let attemptButton = document.createElement('button')
+                attemptButton.dataset.type = "button"
+                attemptButton.innerText = "Attempt This Challenge - NEW"
+                dynamicContentBody.append(attemptButton)
+
             })
 
         //    timerFunction()
         }
     })
 }
-
-// function checkProperties(object) {
-//     let attributeArray
-//     for (let key in object) {
-//         if (object[key] !== null)
-//             attributeArray.key = object[key]
-//     }
-//     return attributeArray;
-// }
-
-
-
-
-
-
-
 
 
 function fetchChallenges() {
@@ -118,7 +196,7 @@ function showChallenge(challenge) {
         fetch(`http://localhost:3000/challenges/rankings/${challenge.id}`)
         .then(response => response.json())
         .then(leaderBoardArray => {
-            currentLeaderBoardArray = leaderBoardArray
+            currentLeaderBoardArray = leaderBoardArray.sort((a, b) => (a.score > b.score) ? 1 : -1).reverse()
         })
         
     })
