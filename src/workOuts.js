@@ -32,7 +32,7 @@ function renderAllWorkOuts() {
                 workoutCardListener()
                }) 
 }
-
+workoutCardListener()
 function workoutCardListener() {
     dynamicContentBody.addEventListener('click', event => {
         if (event.target.matches('.card')) {  // && !athleteID   test if user is Logged in before allowing 
@@ -139,7 +139,7 @@ function workoutCardListener() {
 
                 let attemptButton = document.createElement('button')
                 attemptButton.dataset.type = "button"
-                attemptButton.innerText = "Attempt This Challenge - NEW"
+                attemptButton.innerText = "Attempt This Challenge"
                 dynamicContentBody.append(attemptButton)
 
             })
@@ -190,6 +190,7 @@ function showChallenge(challenge) {
         .then(response => response.json())
         .then(leaderBoardArray => {
             currentLeaderBoardArray = leaderBoardArray.sort((a, b) => (a.score > b.score) ? 1 : -1).reverse()
+            console.log(currentLeaderBoardArray)
         })
         
     })
