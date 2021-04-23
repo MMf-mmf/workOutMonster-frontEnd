@@ -2,7 +2,8 @@ const sideBar = document.querySelector("#sidebar")
 const sideBarChallengeUl = document.querySelector("#pageSubmenu")
 const dynamicContentBody = document.querySelector("#app")
 const workoutList = document.querySelector('#workout-list > a')
-
+let currentLeaderBoardArray
+let currentChallenge
 
 
 // function sideBarEventListener() {
