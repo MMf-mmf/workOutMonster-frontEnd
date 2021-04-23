@@ -191,10 +191,7 @@ function backToHomePage(message = nill) {
     profileElement.style.display = 'block'
     sigOutElement.style.display = 'block'
 
-<<<<<<< Updated upstream
-=======
     
->>>>>>> Stashed changes
     dynamicContent.innerHTML = `<p>Hello  ${message}</p>
     <p>Welcome to Faceoff - Iron Fist</p>
         <p><b>the place where "Some Quote"</b></p>`

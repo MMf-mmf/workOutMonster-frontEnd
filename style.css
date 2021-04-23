@@ -1,6 +1,14 @@
 
 .dynamicContent {
-    text-align: center
+    text-align: center;
+    background-color: #7ed4ff;
+    border-radius: 10%;
+    border-radius: 25px;
+    background-position: left top;
+    background-repeat: repeat;
+    padding: 20px;
+    width: 200px;
+
 }
 
 #app {
@@ -11,7 +19,7 @@
   }
 
   h1 {
-    background-color: rgb(187, 143, 143);
+    background-color: rgb(220, 80, 80);
     color: white;
     opacity: 0.4;
     padding: 20px;
@@ -48,17 +56,17 @@
   }
 div.card[data-id = '2']{
     background-image: url("https://www.aleanlife.com/wp-content/uploads/2020/09/classic-pushup.gif");
-    background-size: 400px 620px
+    background-size: 400px 620px  /* for henry it is 320px  500px */
 }
 
 div.card[data-id = '1']{
     background-image: url("https://i.pinimg.com/originals/68/01/cb/6801cb5f259e4e3fb793912c53366b7e.gif");
-    background-size: 400px 510px
+     background-size:  400px 510px  /*350px and 400px */
 }
 
 div.card[data-id = '3']{
     background-image: url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/workouts/2016/03/plank-1457045584.gif");
-    background-size: 400px 750px
+    background-size: 400px 750px /* 300px and 300px */
 }
 
 
@@ -111,13 +119,14 @@ div.card[data-id = '3']{
   }
 
   .challengeDetails{
-      color: #ddd;
+      color: rgb(74, 160, 191);
       font-size: 32px;
   }
   hr{
     border: 8px solid rgb(71, 169, 56);
     border-radius: 6px;
   }
+ 
 
 
   .button {
@@ -137,18 +146,24 @@ div.card[data-id = '3']{
     margin-right: auto;
     margin-top: 60px;
     border-collapse: collapse;
-    border: 2px solid rgb(9, 163, 246);
-    width: 65%;
+    border: 2px solid rgb(35, 187, 52);
+    width: 75%;
+    color: rgb(3, 115, 167) ;
+    font-size: 30px;
+    font-weight: bolder;
+    background-color: #b1c3cc;
   }
 
-tr.first-tr {
+/* tr.first-tr {
   background-color: rgb(54, 141, 208);
   border:  2px solid rgb(9, 163, 246);
-}
+} */
   
   td, th {
     padding: 0.5rem;
     text-align: center;
+    border:  5px solid rgba(26, 211, 79, 0.57);
+    
   }
 
 /* td:nth-child(1) { background: hsl(188, 100%, 50%); }
@@ -198,7 +213,9 @@ p {
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
-    color: #999;
+    color: rgb(21, 123, 118);
+    font-weight: bold;
+    font-style: italic;
 }
 
 a,
@@ -409,7 +426,7 @@ form{
   }
   
   .base-timer__path-remaining.green {
-    color: rgb(65, 184, 131);
+    color: rgb(14, 121, 73);
   }
   
   .base-timer__path-remaining.orange {
@@ -429,5 +446,5 @@ form{
     align-items: center;
     justify-content: center;
     font-size: 100px;
-    color: rgb(65, 228, 155);
+    color: rgb(65, 103, 228);
   }

@@ -48,30 +48,29 @@ function workoutCardListener() {
                 <p>${challenge.description}</p>
                 <hr>
                 <h4>Skill Level:</h4>
-                ${challenge.skill_level}
-                <br>
+                <p>${challenge.skill_level}</p>
                 <hr>
                 <h4>Muscle Group:</h4>
-                ${challenge.muscle_group}
+                <p>${challenge.muscle_group}</p>
                <hr></div>
 
                 `
                 }
 
                 if (challenge.name == "Bodyweight Plank Hold" ) {
-                    dynamicContentBody.innerHTML = `
-                <h1>${challenge.name}</h1>
-                <div>
-                <h6>Your Task:</h6>
-                ${challenge.description}
-                </div><br>
-                <h6>Skill Level:</h6>
-                ${challenge.skill_level}
-                </div><hr>
-                <div>
-                <h6>Muscle Group:</h6>
-                ${challenge.muscle_group}
-                </div><hr>
+                    dynamicContentBody.innerHTML = `<div class="challengeDetails">
+                <h1 id="challengeDetails">${challenge.name}</h1>
+                <hr>
+                <h4>Your Task:</h4>
+                <p>${challenge.description}</p>
+                <hr>
+                <h4>Skill Level:</h4>
+                <p>${challenge.skill_level}</p>
+                <hr>
+                <h4>Muscle Group:</h4>
+                <p>${challenge.muscle_group}</p>
+               <hr></div>
+
                 `
                 }
 
