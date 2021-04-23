@@ -80,10 +80,11 @@ div.card[data-id = '3']{
       background-color: dimgray;
   }
 
-  /* #content{
+  #content{
       background-image: url("https://www.interiordecorating.com/images/cat/wall/bluemtn/FB075781_z.jpg");
-      background-size: 1000px 1500px
-  } */
+      background-size: 1000px 1500px;
+      opacity: 0.9;
+  }
 
   #login{
       display: block;
@@ -114,10 +115,11 @@ div.card[data-id = '3']{
       font-size: 32px;
   }
   hr{
-    border-top: 2px dashed rgba(238, 242, 7, 0.844);
+    border: 8px solid rgb(71, 169, 56);
+    border-radius: 6px;
   }
 
-  
+
   .button {
     background-color: #4CAF50; /* Green */
     border: none;
@@ -130,6 +132,31 @@ div.card[data-id = '3']{
     margin-top: 40px;
   }
 
+  table {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+    border-collapse: collapse;
+    border: 2px solid rgb(9, 163, 246);
+    width: 65%;
+  }
+
+tr.first-tr {
+  background-color: rgb(54, 141, 208);
+  border:  2px solid rgb(9, 163, 246);
+}
+  
+  td, th {
+    padding: 0.5rem;
+    text-align: center;
+  }
+
+/* td:nth-child(1) { background: hsl(188, 100%, 50%); }
+td:nth-child(2) { background: hsl(186, 77%, 46%); }
+td:nth-child(3) { background: hsl(188, 71%, 43%); }
+td:nth-child(4) { background: hsla(198, 82%, 45%, 0.804); }
+td:nth-child(5) { background: hsl(203, 87%, 46%); }
+td:nth-child(6) { background: hsl(208, 91%, 46%); } */
 
 
 
