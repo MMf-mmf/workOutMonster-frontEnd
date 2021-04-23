@@ -56,17 +56,17 @@
   }
 div.card[data-id = '2']{
     background-image: url("https://www.aleanlife.com/wp-content/uploads/2020/09/classic-pushup.gif");
-    background-size: 400px 620px  /* for henry it is 320px  500px */
+    background-size: 320px 500px
 }
 
 div.card[data-id = '1']{
     background-image: url("https://i.pinimg.com/originals/68/01/cb/6801cb5f259e4e3fb793912c53366b7e.gif");
-     background-size:  400px 510px  /*350px and 400px */
+    background-size: 350px 400px
 }
 
 div.card[data-id = '3']{
     background-image: url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/workouts/2016/03/plank-1457045584.gif");
-    background-size: 400px 750px /* 300px and 300px */
+    background-size: 300px 300px
 }
 
 
