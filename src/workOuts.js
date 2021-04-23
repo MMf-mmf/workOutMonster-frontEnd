@@ -2,17 +2,9 @@ const sideBar = document.querySelector("#sidebar")
 const sideBarChallengeUl = document.querySelector("#pageSubmenu")
 const dynamicContentBody = document.querySelector("#app")
 const workoutList = document.querySelector('#workout-list > a')
-let currentLeaderBoardArray
-let currentChallenge
+// let currentLeaderBoardArray
+// let currentChallenge
 
-
-// function sideBarEventListener() {
-//     sideBar.addEventListener('click', event => {
-//         if (event.target.id == "workout-1") {
-
-//         }
-//     })
-// }
 
 
 function workoutsChallengesEventListener() {
@@ -32,38 +24,35 @@ function renderAllWorkOuts() {
                 workoutCardListener()
                }) 
 }
-workoutCardListener()
+
+// workoutCardListener()
 function workoutCardListener() {
     dynamicContentBody.addEventListener('click', event => {
-        if (event.target.matches('.card')) {  // && !athleteID   test if user is Logged in before allowing 
+        if (event.target.matches('.card') || event.target.matches('h1')) {  // && !athleteID   test if user is Logged in before allowing 
             challengeID = event.target.dataset.id
            clearPage()
-           console.log(event.target)
-           console.log(event.target.dataset.id)
+        //    console.log(event.target)
+        //    console.log(event.target.dataset.id)
            fetch(`http://localhost:3000/challenges/${event.target.dataset.id}`)
             .then(response => response.json())
             .then(challenge => {currentChallenge = challenge
                 console.log(currentChallenge)
                 // console.log(checkProperties(challenge))
-                if (challenge.max_time == 5) {
-                    dynamicContentBody.innerHTML = `
-                <h1>${challenge.name}</h1>
-                <div>
-                <h6>Your Task:</h6>
-                ${challenge.description}
-                </div><br>
-                <div>
-                <h6>Max Time Allowed:</h6>
-                ${challenge.max_time} Minutes
-                </div><br>
-                <div>
-                <h6>Skill Level:</h6>
+                if (challenge.max_time == 5 || challenge.max_time == 15) {
+                    dynamicContentBody.innerHTML = `<div class="challengeDetails">
+                <h1 id="challengeDetails">${challenge.name}</h1>
+                <hr>
+                <h4>Your Task:</h4>
+                <p>${challenge.description}</p>
+                <hr>
+                <h4>Skill Level:</h4>
                 ${challenge.skill_level}
-                </div><br>
-                <div>
-                <h6>Muscle Group:</h6>
+                <br>
+                <hr>
+                <h4>Muscle Group:</h4>
                 ${challenge.muscle_group}
-                </div><br>
+               <hr></div>
+
                 `
                 }
 
@@ -76,11 +65,11 @@ function workoutCardListener() {
                 </div><br>
                 <h6>Skill Level:</h6>
                 ${challenge.skill_level}
-                </div><br>
+                </div><hr>
                 <div>
                 <h6>Muscle Group:</h6>
                 ${challenge.muscle_group}
-                </div><br>
+                </div><hr>
                 `
                 }
 
@@ -176,12 +165,10 @@ function renderChallengeLinks(array) {
 function showChallenge(challenge) {
     const cardDiv = document.createElement('div')
     cardDiv.classList.add('card')
-    
- 
     cardDiv.dataset.id = challenge.id
     cardDiv.innerHTML=`
-   
-    <h1>${challenge.name}</h1>
+    <h1 data-id = "${challenge.id}">${challenge.name}</h1>
+
     Your task:<br>
     ${challenge.description}<br>
     </div>`

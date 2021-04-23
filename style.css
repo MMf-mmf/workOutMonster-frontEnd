@@ -16,11 +16,11 @@
     opacity: 0.4;
     padding: 20px;
   }
-  #app > div:nth-child(1) > h1{
+  #challengeDetails{
       background-color: transparent;
       opacity: 1;
-      color: rgb(255, 242, 242);
-      
+      color: rgb(235, 176, 176);    
+      font-weight: bold;
 }
 
 
@@ -80,10 +80,10 @@ div.card[data-id = '3']{
       background-color: dimgray;
   }
 
-  #content{
+  /* #content{
       background-image: url("https://www.interiordecorating.com/images/cat/wall/bluemtn/FB075781_z.jpg");
       background-size: 1000px 1500px
-  }
+  } */
 
   #login{
       display: block;
@@ -106,7 +106,15 @@ div.card[data-id = '3']{
   }
 
   form{
-      color: #fafafa
+      color: #fafafa;
+  }
+
+  .challengeDetails{
+      color: #ddd;
+      font-size: 32px;
+  }
+  hr{
+    border-top: 2px dashed rgba(238, 242, 7, 0.844);
   }
 
 

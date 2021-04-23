@@ -3,6 +3,8 @@ const dynamicContent = document.querySelector(".dynamicContent")
 let athleteID = null
 let athleteObject
 let challengeID = null
+let currentLeaderBoardArray
+let currentChallenge
 topNavBarListener()
 fetchChallenges().then(renderChallengeLinks)
 workoutsChallengesEventListener()
