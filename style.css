@@ -117,6 +117,19 @@ div.card[data-id = '3']{
     border-top: 2px dashed rgba(238, 242, 7, 0.844);
   }
 
+  
+  .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 40px;
+  }
+
 
 
 
@@ -382,8 +395,8 @@ form{
   
   .base-timer__label {
     position: absolute;
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
     top: 0;
     display: flex;
     align-items: center;
